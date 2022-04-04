@@ -1,0 +1,7 @@
+Example Subject Line
+This is an example message I'm sending to people.
+
+Here's a second paragraph. Due to the limits of emailto links, this message has a maximum length of around 2000 characters.
+
+Best,
+My Name
