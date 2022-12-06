@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mass Emailer</title>
+</head>
+<body>
+
+<h2>Mass Emailer</h2>
+<form action="/message" method="post">
+
+    <label for="sheet_link">Google Sheet link: </label>
+    <input type="text" name="sheet_link" id="sheet_link">
+    <br/><br/>
+
+    <label for="sheet_name">Google Sheet tab name: </label>
+    <input type="text" name="sheet_name" id="sheet_name">
+    <br/><br/>
+
+    <label for="subject">Subject line: </label>
+    <input type="text" name="subject" id="subject">
+    <br/><br/>
+
+    <label for="email_body">Email body (the whole email except the top line)</label><br/>
+    <textarea id="email_body" name="email_body"></textarea>
+
+    <br/><br/>
+    <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>
