@@ -38,3 +38,6 @@ def message_sender():
         email_body="\n%0d%0a\n%0d%0a" + email_body.replace("\n", "\n%0d%0a"),
         emails=str(emails)
     )
+
+if __name__ == "__main__":
+    app.run()
