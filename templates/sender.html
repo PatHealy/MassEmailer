@@ -3,6 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Mailer</title>
+
+    <style type="text/css">
+        .complete {
+          text-decoration: line-through;
+          color:black;
+        }
+    </style>
 </head>
 <body>
 
@@ -10,19 +17,32 @@
 <p>Clicking a link only brings up the client, you must separately click the send button.</p>
 <p>I'd recommend looking over the first email before you send it.</p>
 
+<hr>
+<hr id="theLine">
+<h3 id="theCounter"></h3>
+
 {% for person in people %}
     <a id="{{person[1]}}" href="mailto:{{person[1]}}?subject={{subject}}&body={{person[0]}}, {{email_body}}">Send email to {{person[0]}}, {{person[1]}}</a><br/><br/>
 {% endfor %}
 
 <script>
+    var theLine = document.getElementById("theLine");
+    var theCounter = document.getElementById("theCounter");
+    var sent = [];
+
     function mark_clicked(evt){
         em = evt.currentTarget.id;
         console.log(em);
         var el = document.getElementById(em);
-        var txt = document.createTextNode(" Emailed!");
+        el.classList.add("complete");
+        var txt = document.createTextNode(" ========== Emailed!");
         el.appendChild(txt);
+        if(! (em in sent)){sent.push(em);}
+        el.after(theLine);
+        theLine.after(theCounter);
+        theCounter.innerHTML = "Total sent: " + sent.length + "<br/>Total left: " + (emails.length - sent.length);
     }
-    var emails = {{emails}};
+    var emails = [{% for email in emails %}"{{email}}", {% endfor %}];
     var i = 0;
     for(i = 0; i < emails.length; i++){
         document.getElementById(emails[i]).addEventListener("click", mark_clicked);

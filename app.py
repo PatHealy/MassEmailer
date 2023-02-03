@@ -31,12 +31,13 @@ def message_sender():
     people, emails = get_people(sheet_id, sheet_name)
     subject = request.form["subject"]
     email_body = request.form["email_body"]
+
     return render_template(
         "sender.html",
         people=people,
         subject=subject,
         email_body="\n%0d%0a\n%0d%0a" + email_body.replace("\n", "\n%0d%0a"),
-        emails=str(emails)
+        emails=emails
     )
 
 if __name__ == "__main__":
