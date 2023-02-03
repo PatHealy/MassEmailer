@@ -11,7 +11,7 @@ def get_people(sheet_id, sheet_name):
     url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
     people = pd.read_csv(url)
     names = [name.split()[0] for name in people.Name]
-    emails = [email for email in people.Email]
+    emails = [email.strip() for email in people.Email]
     return [(names[i], emails[i]) for i in range(len(names))], emails
 
 #################################
